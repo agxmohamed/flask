@@ -1,0 +1,32 @@
+{% extends "manager.html" %}
+
+{% block table %}
+	<table class="table">
+		<th>Id</th>
+		<th>Usuario</th>
+		<th>Titulo</th>
+		<th>Categoria</th>
+		<th>Prioridad</th>
+		<th>Estado</th>
+		<th>Fecha de creación</th>
+		<th>Plazo limite</th>
+		<th>Descripcion</th>
+		<th>Comentario</th>
+		<th>Acciones</th>
+		<th></th>
+		<tr>
+			<td>1</td>
+			<td>Prueba usuario</td>
+			<td>Prueba titulo</td>
+			<td>Prueba Categoria</td>
+			<td>Prueba Prioridad</td>
+			<td>Prueba Estado</td>
+			<td>2015-12-10</td>
+			<td>2016-01-01</td>
+			<td>Prueba Comentario</td>
+			<td>Sarazaaa</td>
+			<td><button type="button" class="btn btn-warning">Modificar</button></td>
+			<td><button type="button" class="btn btn-danger">Eliminar</button></td>
+		</tr>
+	</table>
+{% endblock %}

@@ -29,18 +29,18 @@ def manager():
 	
 	if request.args.get('id') == None:
 		id = 1
-	else:
-		id = request.args.get('id')
-		id = int(id)
+
+	id = request.args.get('id')
+	id = int(id)
 	
-		if id == 1:
-			url = 'http://127.0.0.1/api/task'
-			result = requests.get(url)
-			response = json.loads(result.text)		
-			return render_template('pendingtask.html', active1=active1, response=response)
-		elif id == 2:
-			return render_template('completetask.html', active2=active2)
-		elif id == 3:
-			return render_template('profile.html', active3=active3)
-		else:
-			return render_template('pendingtask.html', active1=active1)
+	if id == 1:
+		url = 'http://127.0.0.1/api/task'
+		result = requests.get(url)
+		response = json.loads(result.text)		
+		return render_template('pendingtask.html', active1=active1, response=response)
+	elif id == 2:
+		return render_template('completetask.html', active2=active2)
+	elif id == 3:
+		return render_template('profile.html', active3=active3)
+	else:
+		return render_template('pendingtask.html', active1=active1)

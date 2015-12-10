@@ -14,19 +14,21 @@
 		<th>Comentario</th>
 		<th>Acciones</th>
 		<th></th>
-		<tr>
-			<td>1</td>
-			<td>Prueba usuario</td>
-			<td>Prueba titulo</td>
-			<td>Prueba Categoria</td>
-			<td>Prueba Prioridad</td>
-			<td>Prueba Estado</td>
-			<td>2015-12-10</td>
-			<td>2016-01-01</td>
-			<td>Prueba Comentario</td>
-			<td>Sarazaaa</td>
-			<td><button type="button" class="btn btn-warning">Modificar</button></td>
-			<td><button type="button" class="btn btn-danger">Eliminar</button></td>
-		</tr>
+		{% for item in response['objects'] %}
+			<tr>
+				<td> {{ item.id }} </td>
+				<td> {{ item.user }} </td>
+				<td> {{ item.title }} </td>
+				<td> {{ item.category }} </td>
+				<td> {{ item.priority }} </td>
+				<td> {{ item.status }} </td>
+				<td> {{ item.creation_date }} </td>
+				<td> {{ item.expiry_date }} </td>
+				<td> {{ item.description }} </td>
+				<td> {{ item.comment }} </td>
+				<td><button type="button" class="btn btn-warning">Modificar</button></td>
+				<td><button type="button" class="btn btn-danger">Eliminar</button></td>
+			</tr>
+		{% endfor %}
 	</table>
 {% endblock %}

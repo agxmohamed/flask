@@ -41,5 +41,7 @@ def manager():
 		return render_template('completetask.html', active2=active2)
 	elif id == 3:
 		return render_template('profile.html', active3=active3)
+	elif id == 4:
+		return render_template('newtask.html')
 	else:
 		return render_template('pendingtask.html', active1=active1)

@@ -1,0 +1,28 @@
+{% extends "manager.html" %}
+
+
+{% block table %}
+	
+	<div class="row">
+		<div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 col-md-offset-4 col-lg-4">
+			<form class="form-signin" action="/login" method="POST">
+				<h2 class="form-signin-heading">Nueva tarea</h2>
+				<label>Titulo</label>
+				<input type="text" id="inputTitle" class="form-control" name="title" placeholder="Titulo" required autofocus>
+				<label>Categoria</label>
+				<input type="text" id="inputCategory" class="form-control" name="category" placeholder="Categoria">
+				<label>Prioridad</label>
+				<input type="text" id="inputPriority" class="form-control" name="priority" placeholder="Prioridad">
+				<label>Plazo limite</label>
+				<input type="text" id="inputLimit" class="form-control" name="limit" placeholder="2015-12-10">
+				<label>Descripcion</label>
+				<input type="text" id="inputDescription" class="form-control" name="description" placeholder="Descripcion">
+				<label>Comentarios</label>
+				<input type="text" id="inputComment" class="form-control" name="comment" placeholder="Comentarios">
+				<br>
+				<button class="btn btn-lg btn-primary btn-block" type="submit">Agregar tarea</button>
+			</form>
+		</div>
+	</div>
+			    		
+{% endblock %}

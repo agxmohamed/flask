@@ -27,17 +27,20 @@ def manager():
 	active2="class=active"
 	active3="class=active"
 	
-	id = request.args.get('id')
-	id = int(id)
-	
-	if id == 1:
-		url = 'http://127.0.0.1/api/task'
-		result = requests.get(url)
-		response = json.loads(result.text)		
-		return render_template('pendingtask.html', active1=active1, response=response)
-	elif id == 2:
-		return render_template('completetask.html', active2=active2)
-	elif id == 3:
-		return render_template('profile.html', active3=active3)
+	if request.args.get('id') == None:
+		id = 1
 	else:
-		return render_template('pendingtask.html', active1=active1)
+		id = request.args.get('id')
+		id = int(id)
+	
+		if id == 1:
+			url = 'http://127.0.0.1/api/task'
+			result = requests.get(url)
+			response = json.loads(result.text)		
+			return render_template('pendingtask.html', active1=active1, response=response)
+		elif id == 2:
+			return render_template('completetask.html', active2=active2)
+		elif id == 3:
+			return render_template('profile.html', active3=active3)
+		else:
+			return render_template('pendingtask.html', active1=active1)

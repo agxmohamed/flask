@@ -29,9 +29,8 @@ def manager():
 	
 	if request.args.get('id') == None:
 		id = 1
-
-	id = request.args.get('id')
-	id = int(id)
+	else:
+		id = int(request.args.get('id'))
 	
 	if id == 1:
 		url = 'http://127.0.0.1/api/task'

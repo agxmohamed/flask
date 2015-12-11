@@ -5,27 +5,29 @@
 		<th>Id</th>
 		<th>Usuario</th>
 		<th>Titulo</th>
-		<th>Categoria</th>
+		<th>Categoría</th>
 		<th>Prioridad</th>
 		<th>Estado</th>
 		<th>Fecha de creación</th>
-		<th>Plazo limite</th>
-		<th>Descripcion</th>
+		<th>Plazo límite</th>
+		<th>Descripción</th>
 		<th>Comentario</th>
 		<th>Acciones</th>
 		<th></th>
 		{% for item in response['objects'] %}
 			<tr>
 				<td> {{ item.id }} </td>
-				<td> {{ item.user }} </td>
+				<td> {{ item.user.username }} </td>
 				<td> {{ item.title }} </td>
-				<td> {{ item.category }} </td>
-				<td> {{ item.priority }} </td>
-				<td> {{ item.status }} </td>
+				<td> {{ item.category.name }} </td>
+				<td> <font color="{{item.priority.color}}">{{ item.priority.name }}</td></font>
+				<td> {{ item.status.name }} </td>
 				<td> {{ item.creation_date }} </td>
 				<td> {{ item.expiry_date }} </td>
 				<td> {{ item.description }} </td>
-				<td> {{ item.comment }} </td>
+				{% for comment in item.comment %}
+					<td> {{ comment.content }} </td>
+				{% endfor %}
 				<td><button type="button" class="btn btn-warning">Modificar</button></td>
 			</tr>
 		{% endfor %}

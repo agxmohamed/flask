@@ -15,6 +15,7 @@
 		<th>Acciones</th>
 		<th></th>
 		{% for item in response['objects'] %}
+			{% if item.id == 1 %}
 			<tr>
 				<td> {{ item.id }} </td>
 				<td> {{ item.user.username }} </td>
@@ -30,6 +31,7 @@
 				{% endfor %}
 				<td><button type="button" class="btn btn-warning">Modificar</button></td>
 			</tr>
+			{% endif %}
 		{% endfor %}
 	</table>
 {% endblock %}

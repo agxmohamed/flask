@@ -24,19 +24,23 @@ def login():
 	else:
 		return render_template('login.html')
 
-@app.route('/newtask', methods=['POST'])
-def newtask():
+@app.route('/manager/<int:params>/newtask', methods=['POST'])
+def newtask(params):
+
+	active1="class=active"
 	_user_id = request.form['user_id']
 	_title = request.form['title']
 	_category = request.form['category']
 	_priority = request.form['priority']
+	_status = request.form['status']
 	_limit_date = request.form['limit_date']
 	_description = request.form['description']
 	_comment = request.form['comment']
 
 	print _user_id, _title, _category, _priority, _limit_date, _description, _comment
 
-	return render_template('pendingtask.html', active1=active1, response=response, user_id=_user_id)
+
+	return redirect("/manager/" + str(_user_id), code=302)
 
 @app.route("/manager/<int:params>")
 def manager(params):
@@ -80,5 +84,4 @@ def get_priority():
 	result = requests.get(url)
 	response_priority = json.loads(result.text)	
 	return response_priority
-
 

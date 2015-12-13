@@ -1,4 +1,3 @@
-from werkzeug.routing import BaseConverter
 import requests
 from flask import request, redirect, render_template, url_for, json
 from app import app
@@ -36,9 +35,6 @@ def newtask(params):
 	_limit_date = request.form['limit_date']
 	_description = request.form['description']
 	_comment = request.form['comment']
-
-	print _user_id, _title, _category, _priority, _limit_date, _description, _comment
-
 
 	return redirect("/manager/" + str(_user_id), code=302)
 

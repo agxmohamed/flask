@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block body %}
+	<div class="container">
+		<div class="row">
+			<div class="page-header">
+  				<h1>Administrador de Tareas</h1>
+			</div>
+		</div>
+		<div class="row">
+			<ul class="nav nav-tabs">
+  				<li role="presentation" {{active1}}><a href="?id=1">Tareas Pendientes</a></li>
+  				<li role="presentation" {{active2}}><a href="?id=2">Tareas finalizadas</a></li>
+  				<li role="presentation" {{active3}}><a href="?id=3">Mi cuenta</a></li>
+  				<div class="text-right">
+  					<a href="?id=4" class="btn btn-primary">Nueva Tarea</a>
+  					<a href="/" class="btn btn-danger">Salir</a>
+  				</div>
+			</ul>
+		</div>
+		<div class="row">
+			<div class="panel panel-default">
+				<div class="panel-body">
+			    	{% block table %}
+			    		
+			    	{% endblock %}
+			  	</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+<!-- 
+¡Pues yo me alzo para desafiar a la sabiduría del mundo, para pedir explicaciones a las «leyes» del hombre y de «Dios»!
+-->
+

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block body %}
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">
+				<form class="form-signin" action="/login" method="POST">
+					<br><br><br><br><br><br><br><br><br><br>
+					<h2 class="form-signin-heading">Administrador de tareas</h2>
+					<label for="inputUser" class="sr-only">Usuario</label>
+					<input type="username" id="inputUser" class="form-control" name="username" placeholder="Usuario" required autofocus>
+					<label for="inputPassword" class="sr-only">Clave</label>
+					<input type="password" id="inputPassword" class="form-control" name="password" placeholder="Clave" required>
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" value="remember-me"> Recordarme
+						</label>
+					</div>
+					<button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
+				</form>
+			</div>
+		</div>
+	</div>	
+{% endblock %}

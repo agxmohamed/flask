@@ -1,0 +1,67 @@
+{% extends "manager.html" %}
+
+
+{% block table %}
+
+	<div class="row">
+		<div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 col-xs-offset-3 col-sm-offset-3 col-md-offset-4 col-lg-offset-4">
+			<form class="form-signin" action="/manager/{{user_id}}/newtask" method="POST">
+				<h2 class="form-signin-heading">Nueva tarea</h2>
+				<div class="form-group">
+					<input type="hidden" name="user_id" value="{{user_id}}">
+				</div>
+				<label>Titulo</label>
+				<input type="text" id="inputTitle" class="form-control" name="title" placeholder="Titulo" required autofocus>
+				<div class="form-group">
+					<label for="sel1">Categoria</label>
+					<select class="form-control" id="sel1" name="category">
+						{% for item in list_cat['objects'] %}
+							<option value="{{loop.index}}" >{{item.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="sel1">Prioridad</label>
+					<select class="form-control" id="sel1" name="priority">
+						{% for item in list_prio['objects'] %}
+							<option value="{{loop.index}}">{{item.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+				<div class="form-group">
+					<input type="hidden" name="status" value="1">
+				</div>
+				<label>Plazo límite</label>
+				<div class="form-group">
+					<div class="input-group input-append date" id="datePicker">
+	    	            <input type="text" class="form-control" name="expiry_date" />
+	                	<span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+            		</div>
+        			<script>
+						$(document).ready(function() 
+						{
+    						$('#datePicker')
+        						.datepicker
+        						(
+        							{
+            							format: 'yyyy/mm/dd'
+        							}
+	        					)
+    	    					.on('changeDate', function(e) 
+        						{
+            						// Revalidate the date field
+            						$('#eventForm').formValidation('revalidateField', 'date');
+        						});    	    					
+        					}
+        				);
+        			</script>	
+				<label>Descripción</label>
+				<div class="form-group">
+					<textarea type="text" id="inputDescription" class="form-control" name="description" placeholder="Descripcion" required></textarea> 
+				</div>
+				<button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
+			</form>
+		</div>
+	</div>
+			    		
+{% endblock %}

@@ -27,7 +27,7 @@ def login():
 def newtask(params):
 
 	active1="class=active"
-	url = "http://localhost/admin/task/"
+	url = "http://localhost/api/task"
 	headers = {"Content-Type": "application/json"}
 	_user_id = request.form['user_id']
 	_title = request.form['title']
@@ -59,7 +59,7 @@ def manager(params):
 		url = 'http://127.0.0.1/api/task'
 		result = requests.get(url)
 		response = json.loads(result.text)		
-		return render_template('pendingtask.html', active1=active1, response=response, user_id=params)
+		return render_template('pendingtask.html', active1=active1, response=response, user_id=params, list_cat=get_category(), list_status = get_status(), list_prio = get_priority())
 	elif id == 2:
 		return render_template('completetask.html', active2=active2)
 	elif id == 3:
@@ -86,4 +86,3 @@ def get_priority():
 	result = requests.get(url)
 	response_priority = json.loads(result.text)	
 	return response_priority
-

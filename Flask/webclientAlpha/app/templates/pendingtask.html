@@ -15,7 +15,7 @@
 		<th>Acciones</th>
 		<th></th>
 		{% for item in response['objects'] %}
-			{% if item.id ==  user_id  %}
+			{% if item.user_id ==  user_id  %}
 			<tr>
 				<td> {{ item.id }} </td>
 				<td> {{ item.user.username }} </td>
@@ -29,7 +29,76 @@
 				{% for comment in item.comment %}
 					<td> {{ comment.content }} </td>
 				{% endfor %}
-				<td><button type="button" class="btn btn-warning">Modificar</button></td>
+				<td>
+					<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Modificar</button>
+					<div class="collapse" id="collapseExample">
+						<form class="form-signin" action="/manager/{{user_id}}/newtask" method="POST">
+							<h2 class="form-signin-heading">Modificar Tarea</h2>
+							<div class="form-group">
+								<input type="hidden" name="user_id" value="{{user_id}}">
+							</div>
+							<label>Titulo</label>
+							<input type="text" id="inputTitle" class="form-control" name="title" placeholder="Titulo" value="{{item.title}}" required autofocus>
+							<div class="form-group">
+								<label for="sel1">Categoria</label>
+								<select class="form-control" id="sel1" name="category">
+									{% for item in list_cat['objects'] %}
+										<option value="{{loop.index}}" >{{item.name}}</option>
+									{% endfor %}
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="sel1">Prioridad</label>
+								<select class="form-control" id="sel1" name="priority">
+									{% for item in list_prio['objects'] %}
+										<option value="{{loop.index}}">{{item.name}}</option>
+									{% endfor %}
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="sel1">Estado</label>
+								<select class="form-control" id="sel1" name="priority">
+									{% for item in list_status['objects'] %}
+										<option value="{{loop.index}}">{{item.name}}</option>
+									{% endfor %}
+								</select>
+							</div>
+							<div class="form-group">
+								<input type="hidden" name="status" value="1">
+							</div>
+							<label>Plazo límite</label>
+							<div class="form-group">
+								<div class="input-group input-append date" id="datePicker">
+				    	            <input type="text" class="form-control" name="expiry_date" value="{{item.expiry_date}}"/>
+				                	<span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+			            		</div>
+			        			<script>
+									$(document).ready(function() 
+									{
+			    						$('#datePicker')
+			        						.datepicker
+			        						(
+			        							{
+			            							format: 'yyyy/mm/dd'
+			        							}
+				        					)
+			    	    					.on('changeDate', function(e) 
+			        						{
+			            						// Revalidate the date field
+			            						$('#eventForm').formValidation('revalidateField', 'date');
+			        						});    	    					
+			        					}
+			        				);
+			        			</script>	
+							<label>Descripción</label>
+							<div class="form-group">
+								<textarea type="text" id="inputDescription" class="form-control" name="description" value=
+								"{{item.description}}" placeholder="Descripcion" required></textarea> 
+							</div>
+							<button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
+						</form>
+					</div>
+				</td>
 			</tr>
 			{% endif %}
 		{% endfor %}

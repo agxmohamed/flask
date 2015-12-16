@@ -16,7 +16,7 @@ manager = restless.APIManager(app, flask_sqlalchemy_db=db)
 # Crear endpoints
 manager.create_api(Task, methods=['POST', 'GET', 'DELETE', 'PUT'])
 manager.create_api(User)
-manager.create_api(Comment)
+manager.create_api(Comment, methods=['POST', 'GET', 'PUT'])
 manager.create_api(Category)
 manager.create_api(Status)
 manager.create_api(Priority)
